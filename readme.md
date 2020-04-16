@@ -10,6 +10,8 @@
 
 - [在父组件传给子组件的方法中添加额外的参数](vue/component-function.md)
 
+- [Ant Design Vue 注意事项](vue/ant-design.md)
+
 ## [Github 如何发布预览网站](github/github.io.md)
 
 ## [其他笔记](other/readme.md)

@@ -1,6 +1,8 @@
 # 其他笔记
 
 ## [Git 相关笔记](./git.md)
+## [Promise](./promise.md)
+## [Vue3.0-Beta](./vue3.0-beta.md)
 
 ## Webstorm Terminal 使用 `git log` 中文显示错误
 

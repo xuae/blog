@@ -1,31 +1,6 @@
 # Vue3.0 Beta
 > 尤雨溪在2020年4月21日Vue3.0 Beta直播基本内容
 
-- <a href='#rfcs'>全新文档RFCs</a>
-- <a href='#new'>六大亮点</a>
-- <a href='#performance'>Performance</a>
-    - <a href='#performance1'>要点1: 编译模板的优化</a>
-    - <a href='#performance2'>要点2: 事件监听缓存: cacheHandlers</a>
-    - <a href='#performance3'>补充: PatchFlags枚举定义</a>
-- <a href='#tree-shaking-support'>Tree shaking support</a>
-- <a href='#composition-api'>Composition API</a>
-- <a href='#fragment'>Fragment</a>
-    - <a href='#teleport'>`<Teleport>`</a>
-    - <a href='#suspense'>`<Suspense>`</a>
-    - <a href='#typescript'>更好的TypeScript支持</a>
-    - <a href='#custom-renderder-api'>Custom Renderer API: 自定义渲染器 API</a>
-- <a href='#left'>剩余工作</a>
-    - <a href='#docs'>Docs & Migration Guides</a>
-    - <a href='#router'>Router</a>
-    - <a href='#vuex'>Vuex</a>
-    - <a href='#cli'>CLI</a>
-    - <a href='#vite'>新工具: vite（法语 “快”）</a>
-    - <a href='#vue-test-utils'>vue-test-utils</a>
-    - <a href='#dev-tools'>DevTools</a>
-    - <a href='#vetur'>IDE Support (Vetur)</a>
-    - <a href='#nuxt'>Nuxt</a>
-    - <a href='#release'>Vue 2.x还有 2.7 版本</a>
-
 - [全新文档RFCs](#rfcs)
 - [六大亮点](#new)
 - [Performance](#performance)

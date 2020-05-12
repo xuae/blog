@@ -66,6 +66,49 @@
 
     > 强推可能会导致其他用户提交的commit丢失
 
+## 如何修改已提交 commit 的用户信息
+> 警告：此操作会破坏历史记录。
+>
+> 如果正在与其他人在存储库上进行协作，则重写已发布的历史记录被认为是不好的做法。
+>
+> 只应在紧急情况下这样做。
+
+1. Git Bash 复制并粘贴脚本，根据需要替换以下变量：
+    - OLD_EMAIL: 旧的邮箱地址
+    - CORRECT_NAME: 新的用户名
+    - CORRECT_EMAIL: 新的邮箱地址
+
+    ```
+    #!/bin/sh
+
+    git filter-branch --env-filter '
+
+    OLD_EMAIL="your-old-email@example.com"
+    CORRECT_NAME="Your Correct Name"
+    CORRECT_EMAIL="your-correct-email@example.com"
+
+    if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+    then
+    export GIT_COMMITTER_NAME="$CORRECT_NAME"
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+    fi
+    if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+    then
+    export GIT_AUTHOR_NAME="$CORRECT_NAME"
+    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+    fi
+    ' --tag-name-filter cat -- --branches --tags
+    ```
+
+1. 按Enter键运行脚本。
+
+1. 查看新的Git历史记录是否有错误。
+
+1. 将更正的历史记录推送到GitHub：
+    ```
+    git push --force --tags origin 'refs/heads/*'
+    ```
+
 ## 分支合并
 
 > git merge --squash [branch] 会变更提交者作者信息，追溯困难，解决方法是由 branch 分支作者来合并到当前分支

@@ -37,6 +37,19 @@
     git push origin HEAD --force // 强制推送，慎用
     ```
 
+1. git 账号信息
+
+    ```
+    git config user.name // 查看当前登录的用户名
+    git config user.email // 查看当前登录的邮箱
+
+    git config user.name 'Your_User_Name' // 修改当前用户名
+    git config user.email 'Your_Email' // 修改当前邮箱
+
+    git config --global user.name 'Your_User_Name' // 修改全局用户名
+    git config --global user.email 'Your_Email' // 修改全局邮箱
+    ```
+
 ## 如何彻底删除已提交的 commit
 
 > 此操作谨慎使用，千万不要随便使用

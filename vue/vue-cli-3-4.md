@@ -1,16 +1,25 @@
-# Vue Cli 3.x | 4.x 搭建Vue项目步骤
+---
+    title: Vue Cli 3.x | 4.x 搭建Vue项目步骤
+    date: 2019-10-21
+    categories:
+     - vue
+    tags:
+     - vue
+---
 
-> Vue CLI 3.x 与 4.x的搭建步骤现在没什么区别，就没有单独分开写。
->
-> Vue CLI 4.0 于 2019-10-16 正式发布，刚好是在我开始准备写文章的时候，所以这个项目是基于v4.0.4搭建的，但是一开始是使用 Vue CLI v3.11.0创建的项目，基于创建时错误太多，成功率低，卡顿，然后就选择升级成4.0搭建的项目。
->
-> Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统。有三个组件：
->
-> CLI：`@vue/cli` 全局安装的 npm 包，提供了终端里的vue命令（如：vue create 、vue serve 、vue ui 等命令）
->
-> CLI 服务：`@vue/cli-service` 是一个开发环境依赖。构建于 webpack 和 webpack-dev-server 之上（提供 如：serve、build 和 inspect 命令）
->
-> CLI 插件：给Vue 项目提供可选功能的 npm 包 （如： Babel/TypeScript 转译、ESLint 集成、unit和 e2e测试 等）
+:::tip
+Vue CLI 3.x 与 4.x的搭建步骤现在没什么区别，就没有单独分开写。
+
+Vue CLI 4.0 于 2019-10-16 正式发布，刚好是在我开始准备写文章的时候，所以这个项目是基于v4.0.4搭建的，但是一开始是使用 Vue CLI v3.11.0创建的项目，基于创建时错误太多，成功率低，卡顿，然后就选择升级成4.0搭建的项目。
+
+Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统。有三个组件：
+
+CLI：`@vue/cli` 全局安装的 npm 包，提供了终端里的vue命令（如：vue create 、vue serve 、vue ui 等命令）
+
+CLI 服务：`@vue/cli-service` 是一个开发环境依赖。构建于 webpack 和 webpack-dev-server 之上（提供 如：serve、build 和 inspect 命令）
+
+CLI 插件：给Vue 项目提供可选功能的 npm 包 （如： Babel/TypeScript 转译、ESLint 集成、unit和 e2e测试 等）
+:::
 
 ## 安装
 
@@ -171,7 +180,7 @@
 
 > 这是使用 Vue CLI v3.11.0 搭建项目时遇到的错，不仅成功率低，而且创建新项目时特别慢，也可能跟我选择的插件比较多有关系。最终看到 Vue CLI v4.0.0 在 2019-10-16 发布，然后升级成最新版本，一次性就创建完成，没有卡顿现象，也不慢，特别高兴，哈哈。
 
-vue create vue create <Project Name> 报错：
+`vue create vue create <Project Name>` 报错：
 
 `Unexpected end of JSON input while parsing near......`
 

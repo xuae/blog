@@ -1,8 +1,17 @@
-# Vue Cli 2.x 搭建Vue项目步骤
+---
+    title: Vue Cli 2.x 搭建Vue项目步骤
+    date: 2019-10-21
+    categories:
+     - vue
+    tags:
+     - vue
+---
 
-> Vue项目环境配置请查看 [Vue环境](init-project.md)。
->
-> Vue Cli 3.x 的搭建过程请查看 [Vue Cli 3.x 搭建Vue项目](vue-cli-3-4.md) 。
+:::tip
+Vue项目环境配置请查看 [Vue环境](init-project.md)。
+
+Vue Cli 3.x 的搭建过程请查看 [Vue Cli 3.x 搭建Vue项目](vue-cli-3-4.md) 。
+:::
 
 ## 安装
 

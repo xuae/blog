@@ -1,3 +1,8 @@
+---
+    home: true
+    footer: MIT Licensed | Copyright © 2019-present xuae
+---
+
 # 目录
 
 ## [Vue 相关笔记](vue/readme.md)

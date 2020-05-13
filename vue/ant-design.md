@@ -1,4 +1,13 @@
-# Ant Design Vue 注意事项
+---
+    title: Ant Design Vue
+    date: 2020-04-16
+    categories:
+     - ant-design-vue
+    tags:
+     - ant-design-vue
+---
+
+## Ant Design Vue 注意事项
 
 - 使用 a-form 的 submit 方法时必须阻止默认事件，否则可能出现刷新页面的情况
 > 场景说明：

@@ -1,6 +1,15 @@
-# Github 如何发布预览网站
+---
+    title: Github 如何发布预览网站
+    date: 2020-03-09
+    categories:
+     - github
+    tags:
+     - github
+---
 
-> 使用 xxx.github.io 访问。
+:::tip
+使用 xxx.github.io 访问。
+:::
 
 1. 新建一个 github 仓库（已有无需创建）。
 

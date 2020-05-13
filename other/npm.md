@@ -1,4 +1,13 @@
-# npm 传参
+---
+    title: npm
+    date: 2020-05-12
+    categories:
+     - npm
+    tags:
+     - npm
+---
+
+## npm 传参
 
 以下命令是在 vue cli v4.x 搭建的项目中运行的
 
@@ -16,7 +25,7 @@ package.json 中的代码如下：
 npm run serve
 ```
 
-## 传 webpack 支持的参数
+### 传 webpack 支持的参数
 package.json 中传参是这样的：
 ```json
 {
@@ -44,7 +53,7 @@ npm run serve -- --port 8000
 vue-cli-service serve --port 8000
 ```
 
-## 传自定义参数
+### 传自定义参数
 ```
 npm run serve -- --custom-option=custom
 ```

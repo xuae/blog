@@ -55,6 +55,9 @@ git config user.email 'Your_Email' // 修改当前邮箱
 
 git config --global user.name 'Your_User_Name' // 修改全局用户名
 git config --global user.email 'Your_Email' // 修改全局邮箱
+
+git config --global --unset user.name // 删除全局配置的用户名
+git config --global --unset user.email // 删除全局配置的邮箱
 ```
 
 ## 如何彻底删除已提交的 commit

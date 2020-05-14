@@ -17,7 +17,7 @@
 
 - [Ant Design Vue 注意事项](vue/ant-design.md)
 
-## [Github 如何发布预览网站](github/github.io.md)
+## [Github 如何发布预览网站](other/github.io.md)
 
 ## [其他笔记](other/readme.md)
 

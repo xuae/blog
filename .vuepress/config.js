@@ -69,14 +69,14 @@ module.exports = {
     lastUpdated: '上次更新',
 
     // 项目开始时间，只填写年份
-    startYear: '2020',
+    startYear: '2019',
 
     /**
      * 顶部导航栏链接
      */
     nav: [
-      { text: '首页', icon: 'reco-home', link: '/' },
-      { text: '时间轴', link: '/timeline/', icon: 'reco-date' },
+      { text: '主页', icon: 'reco-home', link: '/' },
+      { text: '时间线', link: '/timeline/', icon: 'reco-date' },
 
       /**
        * 下拉菜单，可设置分组

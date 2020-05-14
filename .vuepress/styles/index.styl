@@ -3,6 +3,8 @@
 //.content {
 //  font-size 30px;
 //}
+$box-shadow = 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12)
+$box-shadow-hover = 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12)
 
 pre.vue-container
   border-left-width: .5rem;
@@ -21,4 +23,41 @@ pre.vue-container
     em
       color #808080
       font-weight light
+
+// 顶部导航
+.navbar
+  box-shadow: $box-shadow !important;
+
+// 搜索结果弹窗
+.suggestions
+  border: none !important;
+  box-shadow: $box-shadow-hover;
+
+// 标签和分类列表中的标签（分类）按钮
+.tags:not(.reco-tag) span,
+.categories-wrapper .category-wrapper .category-item a
+  border-radius: 4px !important;
+  box-shadow: $box-shadow !important;
+  line-height: 36px !important;
+  padding: 0 16px !important;
+  font-size: 14px !important;
+  &.active,
+  &:hover
+    transform: initial !important;
+    box-shadow: $box-shadow-hover !important;
+
+// 基本块，修改其阴影
+.abstract-item,
+.back-to-ceiling
+.pagation .pagation-list span.jump,
+.pagation .pagation-list .jumpinp input
+  box-shadow: $box-shadow !important;
+  &:hover
+    box-shadow: $box-shadow-hover !important;
+
+// 分页按钮样式
+.pagation .pagation-list span.jump
+  border: none !important; // 边框无法去除，原因是在分页组件内部写了 border: 1px solid var(--border-color) !important
+  padding: 5px 10px !important;
+  margin-left: 8px !important;
 

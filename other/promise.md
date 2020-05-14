@@ -8,7 +8,21 @@
 ---
 
 ## 用法
-> executor是带有 resolve 和 reject 两个参数的函数 。Promise构造函数执行时立即调用executor 函数， resolve 和 reject 两个函数作为参数传递给executor（executor 函数在Promise构造函数返回所建promise实例对象前被调用）。resolve 和 reject 函数被调用时，分别将promise的状态改为fulfilled（完成）或rejected（失败）。executor 内部通常会执行一些异步操作，一旦异步操作执行完毕(可能成功/失败)，要么调用resolve函数来将promise状态改成fulfilled，要么调用reject 函数将promise的状态改为rejected。如果在executor函数中抛出一个错误，那么该promise 状态为rejected。executor函数的返回值被忽略。
+
+::: tip
+
+executor是带有 resolve 和 reject 两个参数的函数 。
+
+Promise构造函数执行时立即调用executor 函数， resolve 和 reject 两个函数作为参数传递给executor（executor 函数在Promise构造函数返回所建promise实例对象前被调用）。
+
+resolve 和 reject 函数被调用时，分别将promise的状态改为fulfilled（完成）或rejected（失败）。
+
+executor 内部通常会执行一些异步操作，一旦异步操作执行完毕(可能成功/失败)，要么调用resolve函数来将promise状态改成fulfilled，要么调用reject 函数将promise的状态改为rejected。
+
+如果在executor函数中抛出一个错误，那么该promise 状态为rejected。executor函数的返回值被忽略。
+
+:::
+
 ```javascript
 new Promise( function(resolve, reject) { } /* executor */  );
 
@@ -20,7 +34,17 @@ new Promise((resolve, reject) => {
 ```
 
 ## 状态
-> `Promise` 对象是一个代理对象（代理一个值），被代理的值在Promise对象创建时可能是未知的。它允许你为异步操作的成功和失败分别绑定相应的处理方法（handlers）。 这让异步方法可以像同步方法那样返回值，但并不是立即返回最终执行结果，而是一个能代表未来出现的结果的promise对象。
+
+::: tip
+
+`Promise` 对象是一个代理对象（代理一个值），被代理的值在Promise对象创建时可能是未知的。
+
+它允许你为异步操作的成功和失败分别绑定相应的处理方法（handlers）。 
+
+这让异步方法可以像同步方法那样返回值，但并不是立即返回最终执行结果，而是一个能代表未来出现的结果的promise对象。
+
+:::
+
 - `pending`: 初始状态，既不是成功，也不是失败状态。
 - `fulfilled`: 意味着操作成功完成。
 - `rejected`: 意味着操作失败。
@@ -63,7 +87,17 @@ p.then(value => {
     - 返回一个未定状态（`pending`）的 Promise，那么 `then` 返回 Promise 的状态也是未定的，并且它的终态与那个 Promise 的终态相同；同时，它变为终态时调用的回调函数参数与那个 Promise 变为终态时的回调函数的参数是相同的
 
 ### catch
-> `catch`方法返回一个`Promise`，并且处理拒绝的情况。它的行为与调用`Promise.prototype.then(undefined, onRejected)` 相同。 (事实上, calling obj.catch(onRejected) 内部calls obj.then(undefined, onRejected)).
+
+::: tip
+
+`catch`方法返回一个`Promise`，并且处理拒绝的情况。
+
+它的行为与调用`Promise.prototype.then(undefined, onRejected)` 相同。 
+
+(事实上, calling obj.catch(onRejected) 内部calls obj.then(undefined, onRejected)).
+
+:::
+
 ```javascript
 new Promise((resolve, reject) => {
   throw 'error';
@@ -117,7 +151,13 @@ p3.catch(function(e) {
 ## 方法
 
 ### Promise.all(iterable)
-> `Promise.all(iterable)` 方法返回一个 `Promise` 实例，此实例在 `iterable` 参数内所有的 `promise` 都“完成（resolved）”或参数中不包含 `promise` 时回调完成（resolve）；如果参数中  promise 有一个失败（rejected），此实例回调失败（reject），失败的原因是第一个失败 `promise` 的结果。
+
+::: tip
+
+`Promise.all(iterable)` 方法返回一个 `Promise` 实例，此实例在 `iterable` 参数内所有的 `promise` 都“完成（resolved）”或参数中不包含 `promise` 时回调完成（resolve）；如果参数中  promise 有一个失败（rejected），此实例回调失败（reject），失败的原因是第一个失败 `promise` 的结果。
+
+:::
+
 - 参数
     - iterable: 一个可迭代对象，如 Array 或 String。
 - 返回值
@@ -159,7 +199,12 @@ p3.catch(function(e) {
         // Promise { <state>: "rejected", <reason>: 555 }
         ```
 ### Promise.race(iterable)
-> `Promise.race(iterable)` 方法返回一个 `promise`，一旦迭代器中的某个`promise`解决或拒绝，返回的 `promise` 就会解决或拒绝。
+
+::: tip
+
+`Promise.race(iterable)` 方法返回一个 `promise`，一旦迭代器中的某个`promise`解决或拒绝，返回的 `promise` 就会解决或拒绝。
+
+:::
 
 `race` 函数返回一个 `Promise`，它将与第一个传递的 `promise` 相同的完成方式被完成。它可以是完成（ resolves），也可以是失败（rejects），这要取决于第一个完成的方式是两个中的哪个。
 - 如果传的迭代是空的，则返回的 `promise` 将永远等待。
@@ -227,7 +272,13 @@ Promise.race([p5, p6]).then(function(value) {
 ```
 
 ### Promise.reject(reason)
-> 返回一个状态为失败的Promise对象，并将给定的失败信息传递给对应的处理方法
+
+::: tip
+
+返回一个状态为失败的Promise对象，并将给定的失败信息传递给对应的处理方法
+
+:::
+
 ```javascript
 Promise.reject(new Error('fail')).then(function() {
   // not called
@@ -237,7 +288,19 @@ Promise.reject(new Error('fail')).then(function() {
 ```
 
 ### Promise.resolve(value)
-> 返回一个状态由给定value决定的Promise对象。如果该值是thenable(即，带有then方法的对象)，返回的Promise对象的最终状态由then方法执行决定；否则的话(该value为空，基本类型或者不带then方法的对象),返回的Promise对象状态为fulfilled，并且将该value传递给对应的then方法。通常而言，如果你不知道一个值是否是Promise对象，使用Promise.resolve(value) 来返回一个Promise对象,这样就能将该value以Promise对象形式使用。
+
+::: tip
+
+返回一个状态由给定value决定的Promise对象。
+
+如果该值是thenable(即，带有then方法的对象)，返回的Promise对象的最终状态由then方法执行决定；
+
+否则的话(该value为空，基本类型或者不带then方法的对象),返回的Promise对象状态为fulfilled，并且将该value传递给对应的then方法。
+
+通常而言，如果你不知道一个值是否是Promise对象，使用Promise.resolve(value) 来返回一个Promise对象,这样就能将该value以Promise对象形式使用。
+
+:::
+
 ```javascript
 Promise.resolve("Success").then(function(value) {
   console.log(value); // "Success"

@@ -7,8 +7,10 @@
      - vue
 ---
 
-:::tip
+::: tip
+
 尤雨溪在2020年4月21日Vue3.0 Beta直播基本内容
+
 :::
 
 ## 全新文档`RFCs`
@@ -34,7 +36,11 @@
 
 ______
 ### 要点1: 编译模板的优化
-> 渲染模板查看工具地址: [https://vue-next-template-explorer.netlify.app/](https://vue-next-template-explorer.netlify.app/)
+
+::: tip
+渲染模板查看工具地址: [https://vue-next-template-explorer.netlify.app/](https://vue-next-template-explorer.netlify.app/)
+
+:::
 
 假设要编译以下代码
 
@@ -172,7 +178,13 @@ export const enum PatchFlags {
 很多时候，我们并不需要 `vue`提供的所有功能，在 `vue 2` 并没有方式排除掉，但是 `3.0` 都可能做成了按需引入
 
 ## Composition API
-> 与`React Hooks`类似的东西，实现方式不同
+
+::: tip
+
+与`React Hooks`类似的东西，实现方式不同
+
+:::
+
 - `Usable alongside existing Options API`: 可与现有的 Options API一起使用
 - `Flexible logic composition and reuse`: 灵活的逻辑组合与复用
 - `Reactivity module can be used as a standalone library`: `vue 3`的响应式模块可以和其他框架搭配使用
@@ -188,7 +200,13 @@ export const enum PatchFlags {
 Ps: 其它的均为常见的工具函数，可先忽略不看。
 
 ## Fragment
-> `Fragment`翻译为: “碎片”
+
+::: tip
+
+`Fragment`翻译为: “碎片”
+
+:::
+
 - `No longer limited to a single root node in templates`: 不再限于模板中的单个根节点
 - `Manual render functions can simply return Arrays`: `render` 函数也可以返回数组了，类似实现了 `React.Fragments` 的功能 。
 - `Just works`
@@ -204,7 +222,13 @@ ______
 
 ______
 ### `<Suspense>`
-> `Suspense`翻译为: “悬念”
+
+::: tip
+
+`Suspense`翻译为: “悬念”
+
+:::
+
 - `Wait on nested async dependencies in a nested tree`: 可在嵌套层级中等待嵌套的异步依赖项
 - `Works with async setup()`: 支持`async setup()`
 - `Works with Async Components`: 支持异步组件
@@ -260,7 +284,12 @@ ______
 
 ______
 ### 新工具: vite（法语 “快”）
-> 地址: [https://github.com/vuejs/vite](https://github.com/vuejs/vite)
+
+::: tip
+
+地址: [https://github.com/vuejs/vite](https://github.com/vuejs/vite)
+
+:::
 
 一个简易的`http`服务器，无需`webpack`编译打包，根据请求的`Vue`文件，直接发回渲染，且支持热更新（非常快）
 
@@ -287,7 +316,7 @@ ______
 
 ______
 ### Vue 2.x还有 2.7 版本
-- T`here will be one last minor release(2.7)`: 将有最后一个小版本（2.7）
+- `There will be one last minor release(2.7)`: 将有最后一个小版本（2.7）
 - `Backporting compatible improvements from 3.0`: " 从`Vue 3`向后移植兼容的改进(不损坏兼容性前提下)
 - `Deprecation warnings for features removed in 3.0`: 加上在`Vue 3`中删除的功能的弃用警告
 - `LTS for 18 months`: `LTS` 18 个月

@@ -7,6 +7,8 @@
      - ant-design-vue
 ---
 
+<Boxx/>
+
 ## 注意事项
 
 ::: tip

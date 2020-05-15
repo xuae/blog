@@ -7,6 +7,8 @@
      - promise
 ---
 
+<Boxx/>
+
 ## 用法
 
 ::: tip

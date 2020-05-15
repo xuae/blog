@@ -46,18 +46,34 @@ module.exports = {
    * 在移动端，搜索框在获得焦点时会放大，并且在失去焦点后可以左右滚动，这可以通过设置元来优化。
    */
   head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
   ],
+
+  // 语言配置
+  locales: {
+    '/': {
+      lang: 'zh-CN'
+    }
+  },
 
   /**
    * 默认主题配置
    */
   themeConfig: {
+    // 显示的主题风格类型
+    type: 'blog',
+
+    // 顶部搜索
     search: true,
     searchMaxSuggestions: 10,
 
+    logo: '/logo.png',
+
     // author
     author: 'xuae',
+    authorAvatar: '/avatar.png',
+
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
     repo: 'http://www.github.com/xuae/blog',
     // 默认是 false, 设置为 true 来启用
@@ -70,6 +86,34 @@ module.exports = {
 
     // 项目开始时间，只填写年份
     startYear: '2019',
+
+    /**
+     * 修改默认语言配置
+     */
+    // locales: {
+    //   '/': {
+    //     recoLocals: {
+    //       homeBlog: {
+    //         article: '美文', // 默认 文章
+    //         tag: '标识', // 默认 标签
+    //         category: '类别', // 默认 分类
+    //         friendLink: '友链' // 默认 友情链接
+    //       }
+    //     }
+    //   }
+    // },
+
+    /**
+     * 友情链接
+     */
+    friendLink: [
+      {
+        title: 'vuepress-theme-reco',
+        desc: '一款简洁而优雅的 vuepress 博客 & 文档 主题',
+        avatar: 'https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png',
+        link: 'https://vuepress-theme-reco.recoluan.com'
+      },
+    ],
 
     /**
      * 顶部导航栏链接
@@ -108,5 +152,10 @@ module.exports = {
     },
 
     ...sidebar,
+  },
+
+  markdown: {
+    // 显示代码的行数
+    lineNumbers: true
   },
 }

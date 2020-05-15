@@ -29,9 +29,10 @@ pre.vue-container
   box-shadow: $box-shadow !important;
 
 // 搜索结果弹窗
-.suggestions
+.suggestions,
+.friend-link-wrapper .friend-link-item .popup-window-wrapper .popup-window
   border: none !important;
-  box-shadow: $box-shadow-hover;
+  box-shadow: $box-shadow-hover !important;
 
 // 标签和分类列表中的标签（分类）按钮
 .tags:not(.reco-tag) span,
@@ -50,10 +51,19 @@ pre.vue-container
 .abstract-item,
 .back-to-ceiling
 .pagation .pagation-list span.jump,
-.pagation .pagation-list .jumpinp input
+.pagation .pagation-list .jumpinp input,
+.home-blog .home-blog-wrapper .info-wrapper .category-wrapper .category-item,
+.friend-link-wrapper .friend-link-item
   box-shadow: $box-shadow !important;
   &:hover
     box-shadow: $box-shadow-hover !important;
+
+.home-blog .home-blog-wrapper .info-wrapper
+  box-shadow: $box-shadow !important;
+
+.home-blog .home-blog-wrapper .info-wrapper .category-wrapper .category-item
+  &:hover
+    transform: initial !important;
 
 // 分页按钮样式
 .pagation .pagation-list span.jump

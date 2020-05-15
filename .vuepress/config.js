@@ -108,6 +108,12 @@ module.exports = {
      */
     friendLink: [
       {
+        title: 'vuepress',
+        desc: 'Vue 驱动的静态网站生成器',
+        avatar: 'https://cn.vuejs.org/images/logo.png',
+        link: 'https://www.vuepress.cn/'
+      },
+      {
         title: 'vuepress-theme-reco',
         desc: '一款简洁而优雅的 vuepress 博客 & 文档 主题',
         avatar: 'https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png',
@@ -121,6 +127,7 @@ module.exports = {
     nav: [
       { text: '主页', icon: 'reco-home', link: '/' },
       { text: '时间线', link: '/timeline/', icon: 'reco-date' },
+      { text: '留言板', link: '/comment', icon: 'reco-suggestion' },
 
       /**
        * 下拉菜单，可设置分组
@@ -149,6 +156,15 @@ module.exports = {
         location: 3, // 在导航栏菜单中所占的位置，默认3
         text: '标签', // 默认文案 “标签”
       }
+    },
+
+    /**
+     * 评论及阅读量显示设置
+     * 设置 leanCloud(https://leancloud.cn/) 里面的 AppId 和 AppKey
+     */
+    valineConfig: {
+      appId: 'nTyjdmMIGU2leFALkOaWfrJV-gzGzoHsz',
+      appKey: 'Alpnj1Y61kp9HDvunxryj9p1',
     },
 
     ...sidebar,

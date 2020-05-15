@@ -174,4 +174,12 @@ module.exports = {
     // 显示代码的行数
     lineNumbers: true
   },
+
+  plugins: [
+    /**
+     * 为博客文章自动随机添加名人名言或其他，可自定义样式和内容
+     * https://github.com/zpj80231/vuepress-plugin-boxx
+     */
+    ["vuepress-plugin-boxx"]
+  ],
 }

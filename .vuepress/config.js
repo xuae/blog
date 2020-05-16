@@ -1,4 +1,6 @@
-const sidebar = require('../config/sidebar.js');
+/**
+ * vuepress 配置
+ */
 
 module.exports = {
   /**
@@ -21,19 +23,6 @@ module.exports = {
    * smoothScroll = true, 启用页面滚动效果
    */
   smoothScroll: true,
-
-  /**
-   * 多语言配置
-   */
-  // locales: {
-  //   // 键名是该语言所属的子路径
-  //   // 作为特例，默认语言可以使用 '/' 作为其路径。
-  //   '/': {
-  //     lang: 'zh-CN', // 将会被设置为 <html> 的 lang 属性
-  //     title: 'VuePress',
-  //     description: 'Vue 驱动的静态网站生成器'
-  //   },
-  // },
 
   /**
    * 主题：vuepress-theme-reco
@@ -106,43 +95,12 @@ module.exports = {
     /**
      * 友情链接
      */
-    friendLink: [
-      {
-        title: 'vuepress',
-        desc: 'Vue 驱动的静态网站生成器',
-        avatar: 'https://cn.vuejs.org/images/logo.png',
-        link: 'https://www.vuepress.cn/'
-      },
-      {
-        title: 'vuepress-theme-reco',
-        desc: '一款简洁而优雅的 vuepress 博客 & 文档 主题',
-        avatar: 'https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png',
-        link: 'https://vuepress-theme-reco.recoluan.com'
-      },
-    ],
+    friendLink: require('../config/friendLink'),
 
     /**
      * 顶部导航栏链接
      */
-    nav: [
-      { text: '主页', icon: 'reco-home', link: '/' },
-      { text: '时间线', link: '/timeline/', icon: 'reco-date' },
-      { text: '留言板', link: '/comment', icon: 'reco-suggestion' },
-
-      /**
-       * 下拉菜单，可设置分组
-       */
-      // {
-      //   text: 'Languages',
-      //   ariaLabel: 'Language Menu',
-      //   items: [
-      //     { text: 'Chinese', link: '/language/chinese/' },
-      //     { text: 'Japanese', link: '/language/japanese/' },
-      //     // { text: 'Group1', items: [/*  */] },
-      //     // { text: 'Group2', items: [/*  */] },
-      //   ]
-      // },
-    ],
+    nav: require('../config/nav/index'),
 
     /**
      * 博客配置
@@ -167,7 +125,7 @@ module.exports = {
       appKey: 'Alpnj1Y61kp9HDvunxryj9p1',
     },
 
-    ...sidebar,
+    sidebar: require('../config/sidebar'),
   },
 
   markdown: {

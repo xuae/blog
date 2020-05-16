@@ -1,8 +1,8 @@
 ---
-    title: npm
+    title: NPM
     date: 2020-05-12
     categories:
-     - npm
+     - 工具
     tags:
      - npm
 ---

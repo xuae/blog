@@ -2,7 +2,7 @@
     title: 在父组件传给子组件的方法中添加额外的参数
     date: 2020-03-14
     categories:
-     - vue
+     - 技术
     tags:
      - vue
 ---

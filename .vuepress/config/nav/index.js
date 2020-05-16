@@ -6,7 +6,7 @@
 module.exports = [
   // { text: '主页', icon: 'reco-home', link: '/' },
   { text: '时轴', link: '/timeline/', icon: 'reco-date' },
-  { text: '留言', link: '/comment', icon: 'reco-suggestion' },
+  { text: '留言', link: '/articles/comment', icon: 'reco-suggestion' },
   require('./documents'),
   require('./utils'),
 

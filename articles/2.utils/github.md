@@ -2,7 +2,7 @@
     title: Github
     date: 2020-03-09
     categories:
-     - github
+     - 工具
     tags:
      - github
 ---

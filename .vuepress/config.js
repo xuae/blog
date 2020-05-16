@@ -95,12 +95,12 @@ module.exports = {
     /**
      * 友情链接
      */
-    friendLink: require('../config/friendLink'),
+    friendLink: require('./config/friendLink'),
 
     /**
      * 顶部导航栏链接
      */
-    nav: require('../config/nav/index'),
+    nav: require('./config/nav/index'),
 
     /**
      * 博客配置
@@ -120,12 +120,9 @@ module.exports = {
      * 评论及阅读量显示设置
      * 设置 leanCloud(https://leancloud.cn/) 里面的 AppId 和 AppKey
      */
-    valineConfig: {
-      appId: 'nTyjdmMIGU2leFALkOaWfrJV-gzGzoHsz',
-      appKey: 'Alpnj1Y61kp9HDvunxryj9p1',
-    },
+    valineConfig: require('./config/valine'),
 
-    sidebar: require('../config/sidebar'),
+    sidebar: require('./config/sidebar'),
   },
 
   markdown: {

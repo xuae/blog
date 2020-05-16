@@ -1,8 +1,5 @@
 // placeholder for test, dont't remove it.
 
-//.content {
-//  font-size 30px;
-//}
 $box-shadow = 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12)
 $box-shadow-hover = 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12)
 
@@ -24,19 +21,18 @@ pre.vue-container
       color #808080
       font-weight light
 
-// 顶部导航
-.navbar
-  box-shadow: $box-shadow !important;
-
-// 搜索结果弹窗
-.suggestions,
-.friend-link-wrapper .friend-link-item .popup-window-wrapper .popup-window
+.suggestions, // 搜索结果弹窗
+.friend-link-wrapper .friend-link-item .popup-window-wrapper .popup-window, // 友情链接弹窗
+.dropdown-wrapper .nav-dropdown, // 顶部二级菜单弹窗
+.mode-options // 主题颜色更改弹窗
   border: none !important;
   box-shadow: $box-shadow-hover !important;
 
-// 标签和分类列表中的标签（分类）按钮
-.tags:not(.reco-tag) span,
-.categories-wrapper .category-wrapper .category-item a
+.mode-options .color-mode-options li // 主题颜色弹窗-模式按钮
+  border-color: #dbdbdb !important;
+
+.tags:not(.reco-tag) span, // 标签列表的标签按钮
+.categories-wrapper .category-wrapper .category-item a // 分类列表的分类按钮
   border-radius: 4px !important;
   box-shadow: $box-shadow !important;
   line-height: 36px !important;
@@ -47,27 +43,43 @@ pre.vue-container
     transform: initial !important;
     box-shadow: $box-shadow-hover !important;
 
-// 基本块，修改其阴影
+/**
+ * 基本块，修改其阴影
+ */
 .abstract-item,
-.back-to-ceiling
-.pagation .pagation-list span.jump,
-.pagation .pagation-list .jumpinp input,
+.back-to-ceiling, // 返回顶部按钮
 .home-blog .home-blog-wrapper .info-wrapper .category-wrapper .category-item,
 .friend-link-wrapper .friend-link-item
   box-shadow: $box-shadow !important;
   &:hover
     box-shadow: $box-shadow-hover !important;
 
-.home-blog .home-blog-wrapper .info-wrapper
+.navbar, // 顶部导航
+.home-blog .home-blog-wrapper .info-wrapper // 首页-个人信息栏
   box-shadow: $box-shadow !important;
 
-.home-blog .home-blog-wrapper .info-wrapper .category-wrapper .category-item
+.home-blog .home-blog-wrapper .info-wrapper .category-wrapper .category-item // 首页-个人信息栏-分类
   &:hover
     transform: initial !important;
+
+.personal-info-wrapper .personal-img, // 首页头像
+.navbar .logo // 顶部导航 logo 图标
+  border-radius: initial !important;
+
+// 首页标题文字
+.home-blog .hero h1, .home-blog .hero .description, .home-blog .hero .action, .home-blog .hero .huawei
+  text-shadow: 0 2px 3px rgba(0,0,0,.65) !important;
 
 // 分页按钮样式
 .pagation .pagation-list span.jump
   border: none !important; // 边框无法去除，原因是在分页组件内部写了 border: 1px solid var(--border-color) !important
   padding: 5px 10px !important;
   margin-left: 8px !important;
+  box-shadow: none !important
+  &:hover
+    background-color: $accentColor !important;
+    color: white !important;
 
+// 分页跳转至几页的输入框
+.pagation .pagation-list .jumpinp input
+  box-shadow: none !important

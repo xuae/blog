@@ -68,7 +68,7 @@ module.exports = {
     search: true,
     searchMaxSuggestions: 10,
 
-    logo: '/logo.png',
+    logo: '/avatar.gif',
 
     // author
     author: 'xuae',

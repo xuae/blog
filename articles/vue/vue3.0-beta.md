@@ -2,9 +2,10 @@
     title: Vue3.0 Beta
     date: 2020-04-29
     categories:
-     - vue
+     - 技术
     tags:
      - vue
+     - vue cli
 ---
 
 ::: tip

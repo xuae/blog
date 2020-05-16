@@ -2,9 +2,10 @@
     title: 初始化Vue项目
     date: 2019-10-21
     categories:
-     - vue
+     - 技术
     tags:
      - vue
+     - vue cli
 ---
 
 ::: tip

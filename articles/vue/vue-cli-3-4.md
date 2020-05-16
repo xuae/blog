@@ -2,9 +2,10 @@
     title: Vue Cli 3.x | 4.x 搭建Vue项目步骤
     date: 2019-10-21
     categories:
-     - vue
+     - 技术
     tags:
      - vue
+     - vue cli
 ---
 
 :::tip

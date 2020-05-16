@@ -2,8 +2,10 @@
     title: Promise
     date: 2020-04-29
     categories:
-     - promise
+     - 技术
     tags:
+     - javascript
+     - es6
      - promise
 ---
 

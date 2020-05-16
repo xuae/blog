@@ -11,6 +11,8 @@
 
 尤雨溪在2020年4月21日Vue3.0 Beta直播基本内容
 
+Vue3.0 Beta 项目地址：[https://github.com/xuae/vue-next-test](https://github.com/xuae/vue-next-test)
+
 :::
 
 ## 全新文档`RFCs`

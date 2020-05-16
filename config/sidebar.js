@@ -75,20 +75,4 @@ directories.forEach(directory => {
   }
 });
 
-module.exports = {
-  /**
-   * 显示所有页面的标题链接
-   */
-  // displayAllHeaders: true, // 默认值：false
-
-  /**
-   * 活动的标题链接
-   * 与页面滚动时自动激活侧边栏链接的插件 @vuepress/plugin-active-header-links 冲突
-   */
-  // activeHeaderLinks: false, // 默认值：true
-
-  /**
-   * 侧边栏数据
-   */
-  sidebar: sidebar,
-}
+module.exports = sidebar;

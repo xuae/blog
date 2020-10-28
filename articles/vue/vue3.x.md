@@ -62,7 +62,7 @@ export default defineComponent({
       //   return ['success', 'error'].includes(val);
       // }
       // 改为箭头函数
-      validator: (val) => {
+      validator: val => {
         return ['success', 'error'].includes(val);
       }
     }

@@ -47,25 +47,20 @@ export default defineComponent({
 
 Error: TS2339: Property 'color' does not exist on type 'ToRefs<Readonly<{ [x: number]: string; } & { flat?: unknown[] | undefined; length?: number | undefined; toString?: string | undefined; toLocaleString?: string | undefined; concat?: string[] | undefined; join?: string | undefined; ... 16 more ...; flatMap?: (<U, This = undefined>(callback: (this: This, value: string,...'.
 
-将 `props` 内的 `validator` 改成箭头函数，Typescript 就不会再提示类型错误了。
-
-完整例子如下：
+正确例子如下：
 
 ```typescript
-import { defineComponent, PropType, toRefs } from 'vue';
+import { defineComponent, Prop, PropType, toRefs } from 'vue';
 
 export default defineComponent({
   props: {
     color: {
+      // type 这句可写可不写
       type: String as PropType<'success' | 'error'>,
-      // validator(val) {
-      //   return ['success', 'error'].includes(val);
-      // }
-      // 改为箭头函数
-      validator: val => {
+      validator(val) {
         return ['success', 'error'].includes(val);
       }
-    }
+    } as Prop<'success' | 'error'>,
   },
   setup(props) {
     const { color } = toRefs(props);

@@ -63,3 +63,14 @@ npm run serve -- --custom-option=custom
 若直接运行 `npm run serve custom`，custom 会被当成 `webpack` 的内部参数，运行时会报错，提示 custom 依赖找不到
 
 所以需要用 `--custom-option=custom` 之类的取代 `custom`，让 webpack 将其识别为 option 参数，就不会被内部作为特定参数处理了
+
+## npm 报错
+
+### `operation not permitted`（没有许可证）
+- 原因：npm 的版本过高，导致一些依赖包下载不全
+- 解决：`npm install` 后面增加 `–no-optional`，例如：`npm i xxx --no-optional`或者`npm i –no-optional`
+
+### 其他错误，清空缓存
+- 方法一：`npm cache clean --force`
+
+- 方法二：删除 npmrc 文件 `C:\Users\{username}\.npmrc`

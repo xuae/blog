@@ -10,7 +10,9 @@
 
 <Boxx/>
 
-## 注意事项
+## Form
+
+### 提交会刷新页面
 
 ::: tip
 
@@ -40,3 +42,12 @@
     }
 </script>
 ```
+
+## Table
+
+### 宽度
+
+必须是数字类型！！！！
+
+- Column 的参数 `width`
+- `<a-table-column>` 的参数`width`

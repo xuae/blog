@@ -1,5 +1,5 @@
 ---
-    title: Chrome 浏览器
+    title: Chrome
     date: 2021-01-15
     categories:
      - 工具

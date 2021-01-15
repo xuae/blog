@@ -1,5 +1,5 @@
 ---
-    title: Win10 系统
+    title: Win10
     date: 2021-01-15
     categories:
      - 工具

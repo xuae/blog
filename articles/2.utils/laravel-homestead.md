@@ -14,6 +14,10 @@ Laravel Homestead：[Laravel 8 官方扩展 Homestead 安装文档](https://lara
 
 具体简介请查看官方文档，以下只讲解自己是如何安装和使用此虚拟机的步骤。
 
+- 电脑环境：Win 10
+- vagrant box 版本：`11.3.0`
+- homestead 版本：`12.3.2`
+
 ## 准备工作
 
 ::: warning
@@ -117,6 +121,8 @@ vagrant box remove 名称 --box-version 版本
     $ init.bat
     Homestead initialized!
     ```
+
+1. 需要启动 Virtual Box，选择 homestead box 配置其网络，设置 -> 网络 -> 网卡2 -> 连接方式选择 `仅主机(Host-Only)网络`，界面名称选择`Virtual Box Host-Only Ethernet Adapter #2`，不配置的话启动会失败。
 
 1. 初始化 homestead 后，再启动 vagrant：
     ```

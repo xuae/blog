@@ -24,6 +24,7 @@ module.exports = {
       items: [
         { text: 'EasyIcon', link: 'http://www.easyicon.net/' },
         { text: 'IconFont', link: 'https://www.iconfont.cn/' },
+        { text: '地图数据-高德', link: 'http://datav.aliyun.com/tools/atlas/index.html' },
       ],
     },
     {

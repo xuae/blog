@@ -39,16 +39,37 @@ Laravel Homestead：[Laravel 8 官方扩展 Homestead 安装文档](https://lara
 ### Vagrant 命令
 
 ``` shell script
+# 初始化
+vagrant init
+
 # 启动虚拟机
 vagrant up
 
 # 关闭虚拟机
 vagrant halt
 
+# 重启虚拟机
+vagrant reload
+
+# SSH 至虚拟机
+vagrant ssh
+
+# 挂起虚拟机
+vagrant suspend
+
+# 唤醒虚拟机
+vagrant resume
+
+# 查看虚拟机运行状态
+vagrant status
+
+# 销毁当前虚拟机
+vagrant destroy
+
 # 销毁虚拟机
 vagrant destroy --force
 
-# 查看 box lieb
+# 查看 box list
 vagrant box list
 
 # 添加 box
@@ -63,7 +84,7 @@ vagrant box remove 名称 --box-version 版本
 
 ### 修改默认虚拟电脑位置
 
-打开 Virtual Box -> 管理 -> 全局设定 -> 常规，修改默认虚拟电脑位置（我将其修改在 `D盘`，位置路径中不能含空格和中文），要是 `C盘` 容量够大，可以不用改。
+打开 Virtual Box -> 管理 -> 全局设定 -> 常规，修改默认虚拟电脑位置（我将其修改在 `D盘`，__位置路径中不能含空格和中文__），要是 `C盘` 容量够大，可以不用改。
 
 ### 注入 Vagrant Box
 
@@ -146,7 +167,7 @@ vagrant box remove 名称 --box-version 版本
 
 ### 启动虚拟机
 - 打开虚拟机软件 -> 启动（若已启动，则点击显示）-> 输入密码 `vagrant` 即可进入虚拟机。
-- 使用命令 `vagrant up` 启动虚拟机。
+- 进入下载好的 `homestead` 项目的文件夹 -> 使用命令 `vagrant up` 启动虚拟机。
 
 ### 查看虚拟机目录
 - 进入虚拟机图形界面点击左上角 Activities -> 打开 ImageMagick -> 单击这个图片 -> file -> open，便可以查看 ubuntu 目录。
@@ -217,6 +238,31 @@ vagrant box remove 名称 --box-version 版本
     
     便实现了url 与 ip 地址的映射了，访问 homestead.test 即可成功显示页面。
 
+## 全局访问 Homestead
+:::tip
+Windows 环境
+:::
+
+1. 在系统的任意位置创建一个批处理文件` homestead.bat`：
+
+    脚本中实例路径 `D:\Homestead` 调整为 `Homestead` 实际安装路径。
+    ```shell script
+    @echo off
+    
+    set cwd=%cd%
+    set homesteadVagrant=D:\Homestead
+    
+    cd /d %homesteadVagrant% && vagrant %*
+    cd /d %cwd%
+    
+    set cwd=
+    set homesteadVagrant=
+    ```
+
+1. 创建文件之后，添加该文件所在目录路径到用户环境变量的 `PATH` 键中。
+
+1. 在系统的任意位置即可运行 `homestead up` 或 `homestead ssh` 命令。
+
 ## 创建项目
 
 windows环境，在 `homestead` 目录下，执行命令：
@@ -266,3 +312,202 @@ Application ready! Build something amazing.
 ```
 
 随后访问配置 `Homestead.yaml` 中对应的 index.php 的 IP 即可。
+
+## 新增站点
+
+1. 新增 sites
+
+    ```shell script
+    $ vim ~/.homestead/Homestead.yaml
+    
+    folders:
+        - map: D:\Development\homestead\projects
+          to: /home/vagrant/Projects
+    
+    # 在sites中新增一条map记录,修改后配置如下: 
+    
+    sites:
+        ### 默认
+        - map: homestead.test
+          to: /home/vagrant/Projects/demo/public
+        ### 新增一个网站
+        - map: another.test
+          to: /home/vagrant/Projects/demo2/public
+    ```
+   
+1. 新增 host 记录
+
+    ```shell script
+    $ sudo vim /etc/hosts
+    
+    ### 新增一条host记录，IP是Homestead.yaml中"ip"，修改后如下：
+    ### ... (略) ...
+    192.168.10.10 homestead.test
+    192.168.10.10 another.test
+    ```
+
+1. 重启虚拟机
+
+    进入`homestead`文件夹目录：
+    ```shell script
+    vagrant reload --provision
+    ```
+
+1. 打开浏览器，输入`http://another.test/`, 即可正常访问。
+
+## 连接 Homestead 数据库
+
+### MySql
+
+:::tip
+地址：192.168.10.10，端口：3306
+
+用户名：homestead，密码：secret
+:::
+
+- 使用客户端连接：
+
+    配置连接，输入地址、端口、用户、密码即可。
+
+- 使用命令登录虚拟机：
+
+    先启动虚拟机，并用ssh连接，执行以下操作：
+    ```shell script
+    # 连接 mysql 数据库
+    vagrant@homestead:~$ mysql -h192.168.10.10 -uhomestead -p
+    # 输入密码
+    Enter password:
+    Welcome to the MySQL monitor.  Commands end with ; or \g.
+    Your MySQL connection id is 9
+    Server version: 8.0.25-0ubuntu0.20.04.1 (Ubuntu)
+    
+    Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+    
+    Oracle is a registered trademark of Oracle Corporation and/or its
+    affiliates. Other names may be trademarks of their respective
+    owners.
+    
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+    # 显示全部数据库
+    mysql> show databases;
+    +--------------------+
+    | Database           |
+    +--------------------+
+    | homestead          |
+    | information_schema |
+    | mysql              |
+    | performance_schema |
+    | sys                |
+    +--------------------+
+    5 rows in set (0.00 sec)
+    ```
+
+### PostgreSQL
+
+:::tip
+地址：192.168.10.10，端口：3306
+
+用户名：homestead，密码：secret
+:::
+
+- 使用客户端连接：
+
+    配置连接，输入地址、端口、用户、密码即可。
+
+- 使用命令连接：
+
+    先启动虚拟机，并用ssh连接，执行以下操作：
+    ```shell script
+    # 连接 postgresql 数据库
+    vagrant@homestead:~$ psql -U homestead -h localhost -W
+    # 输入密码
+    Password:
+    psql (13.3 (Ubuntu 13.3-1.pgdg20.04+1))
+    SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+    Type "help" for help.
+    
+    # 显示全部数据库
+    homestead=# \list
+                                      List of databases
+       Name    |   Owner   | Encoding |   Collate   |    Ctype    |   Access privileges
+    -----------+-----------+----------+-------------+-------------+-----------------------
+     homestead | homestead | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+     postgres  | postgres  | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+     template0 | postgres  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+               |           |          |             |             | postgres=CTc/postgres
+     template1 | postgres  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+               |           |          |             |             | postgres=CTc/postgres
+    (4 rows)
+    ```
+
+:::warning
+__注意：__ 若无法使用`IP(192.168.10.10)`连接`PostgreSQL`数据库，需做以下操作：
+:::
+
+1. 查看`PostgreSQL`版本：
+
+    ```shell script
+    vagrant@homestead:$ psql -V
+    psql (PostgreSQL) 13.3 (Ubuntu 13.3-1.pgdg20.04+1)
+    ```
+   
+1. 根据版本进入需要配置的目录，我这里版本是`13.3`，所以进入的文件目录是`13`
+
+    ```shell script
+    # 进入配置文件夹
+    vagrant@homestead:~$ cd /etc/postgresql/13/main/
+    # 查看全部文件及其权限
+    vagrant@homestead:/etc/postgresql/13/main$ ll
+    # 省略其他...
+    -rw-r----- 1 postgres postgres  5071 Sep 28 08:05 pg_hba.conf
+    -rw-r--r-- 1 postgres postgres 28281 May 13 16:40 postgresql.conf
+    ```
+   
+    需要 `postgresql.conf` 和 `pg_hba.conf` 文件的独写权限：
+    ```shell script
+    # 记得修改文件权限
+    # 设置其他用户可独写 pg_hba.conf 文件
+    vagrant@homestead:/etc/postgresql/13/main$ sudo chmod o+rw pg_hba.conf
+    # 设置其他用户可独写 pg_hba.conf 文件
+    vagrant@homestead:/etc/postgresql/13/main$ sudo chmod o+w postgresql.conf
+    # 权限配置完成之后是这样的
+    vagrant@homestead:/etc/postgresql/13/main$ ll
+    # 省略其他...
+    -rw-r--rw- 1 postgres postgres  5071 Sep 28 08:05 pg_hba.conf
+    -rw-r--rw- 1 postgres postgres 28281 May 13 16:40 postgresql.conf
+    ```
+
+1. `postgresql.conf`配置项改为`listen_address='*'`：
+    
+    ```shell script
+    # 使用上下键可以查看配置项
+    # 按"I"键，可进行编辑
+    # 编辑完成后按"Esc"退出编辑
+    # 退出编辑后，按"Shift" + ":"，然后输入命令即可："wq"(保存并退出)、"q"(仅退出)
+    vagrant@homestead:/etc/postgresql/13/main$ vim postgresql.conf
+    ```
+
+1. 配置`pg_hba.conf`：
+    
+    在此文件最下面一行加：
+    ```editorconfig
+    # IPv4 local connections 允许所有ip连接:
+    host all all 0.0.0.0/0 trust
+    ```
+    编辑文件：
+    ```shell script
+    # 使用上下键可以查看配置项
+    # 按"I"键，可进行编辑
+    # 编辑完成后按"Esc"退出编辑
+    # 退出编辑后，按"Shift" + ":"，然后输入命令即可："wq"(保存并退出)、"q"(仅退出)
+    vagrant@homestead:/etc/postgresql/13/main$ vim pg_hba.conf
+    ```
+
+1. 重启`PostgreSql`服务：
+    ```
+    # 重启 PostgreSql 服务
+    sudo service postgresql restart
+    ```
+
+1. 重新按照上面连接的命令执行即可使用IP连接

@@ -35,7 +35,11 @@ Laravel Homestead：[Laravel 8 官方扩展 Homestead 安装文档](https://lara
     - 我下载的版本是 [11.3.0](https://vagrantcloud.com/laravel/boxes/homestead/versions/11.3.0/providers/virtualbox.box) ，这里需要注意 box(v11.x) 和 homestead(v12.x) 的[版本对应关系](https://github.com/laravel/homestead) 
 
 1. 下载 homestead：`git clone https://github.com/laravel/homestead.git`，直接使用 `git` 命令下载即即可。
-    
+   
+
+### 修改 Vagrant box 路径
+新建环境变量即可：VAGRANT_HOME=你的路径
+ 
 ### Vagrant 命令
 
 ``` shell script
@@ -237,6 +241,13 @@ vagrant box remove 名称 --box-version 版本
     ```
     
     便实现了url 与 ip 地址的映射了，访问 homestead.test 即可成功显示页面。
+    
+### 启动虚拟机报错
+NodeJs 下载失败，需要修改`homestead`项目中，`bin`目录下`wsl-init`文件，将`-sL`改为`-fsSL`，修改后如下所示：
+    ```
+    # NodeJS
+    curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    ```
 
 ## 全局访问 Homestead
 :::tip
@@ -312,6 +323,23 @@ Application ready! Build something amazing.
 ```
 
 随后访问配置 `Homestead.yaml` 中对应的 index.php 的 IP 即可。
+
+### 创建项目报错：
+```shell script
+Creating a "laravel/laravel" project at "./demo"
+https://repo.packagist.org could not be fully loaded (curl error 28 while downloading https://repo.packagist.org/packages.json: Connection timed out after 10004 milliseconds), package information was loaded from the local cache and may be out of date
+
+  [Composer\Downloader\TransportException]                                                                                           
+  curl error 28 while downloading https://repo.packagist.org/p2/laravel/laravel.json: Connection timed out after 10004 milliseconds  
+
+create-project [-s|--stability STABILITY] [--prefer-source] [--prefer-dist] [--repository REPOSITORY] [--repository-url REPOSITORY-URL] [--add-repository] [--dev] [--no-dev] [--no-custom-installers] [--no-scripts] [--no-progress] [--no-secure-http] [--keep-vcs] [--remove-vcs]
+[--no-install] [--ignore-platform-req IGNORE-PLATFORM-REQ] [--ignore-platform-reqs] [--ask] [--] [<package>] [<directory>] [<version>]
+
+```
+将源更改为阿里云 Composer 国内镜像:
+```shell script
+composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+```
 
 ## 新增站点
 
@@ -491,7 +519,7 @@ __注意：__ 若无法使用`IP(192.168.10.10)`连接`PostgreSQL`数据库，�
 1. 配置`pg_hba.conf`：
     
     在此文件最下面一行加：
-    ```editorconfig
+    ```shell script
     # IPv4 local connections 允许所有ip连接:
     host all all 0.0.0.0/0 trust
     ```
@@ -511,3 +539,182 @@ __注意：__ 若无法使用`IP(192.168.10.10)`连接`PostgreSQL`数据库，�
     ```
 
 1. 重新按照上面连接的命令执行即可使用IP连接
+
+## REDIS 服务
+### 修改 redis 密码
+:::tip
+注意修改以下`密码`部分
+:::
+```shell script
+vagrant@homestead:~$ redis-cli
+# 设置密码
+127.0.0.1:6379> config set requirepass 密码
+OK
+# 验证密码，若提示 OK ，则配置成功
+127.0.0.1:6379> auth 密码
+OK
+# 将密码覆盖写入配置中，否则重启便会失效
+127.0.0.1:6379> config rewrite
+OK
+```
+
+stop-writes-on-bgsave-error no
+
+### 重启服务
+```shell script
+sudo service redis-server restart
+```
+
+## 安装 FTP 文件服务
+
+1. 安装软件包；
+    ```
+    sudo apt-get install vsftpd
+    ```
+1. 打开配置文件：
+    ```
+    vim /etc/vsftpd.conf
+    ```
+1. 修改参数：
+    ```shell script
+    #这些设置系统默认是开启的，可以不管
+    listen=NO
+    listen_ipv6=YES
+    dirmessage_enable=YES
+    use_localtime=YES
+    xferlog_enable=YES
+    connect_from_port_20=YES
+    
+    #下面的就要自定义设置了，建议系统默认的不管，然后复制下面的
+    
+    #是否允许匿名访问，NO为不允许
+    anonymous_enable=NO
+    #是否允许本地用户访问,就是linux本机中存在的用户，YES允许
+    local_enable=YES
+    #是否开启写模式，YES为开启
+    write_enable=YES
+    #新建文件权限，一般设置为022，那么新建后的文件的权限就是777-022=755
+    local_umask=022
+    
+    #是否启动userlist为通过模式，YES的话只有存在于userlist文件中的用户才能登录ftp（可以理解为userlist是一个白名单），NO的话，白名单失效，和下面一个参数配合使用
+    userlist_enable=YES
+    #是否启动userlist为禁止模式，YES表示在userlist中的用户禁止登录ftp（黑名单），NO表示黑名单失效，我们已经让userlist作为一个白名单，所以无需使用黑名单功能
+    userlist_deny=NO
+    #指定哪个文件作为userlist文件，我们稍后编辑这个文件
+    userlist_file=/etc/vsftpd.user_list
+    
+    #是否限制本地所有用户切换根目录的权限，YES为开启限制，即登录后的用户不能访问ftp根目录以外的目录，当然要限制啦
+    chroot_local_user=YES
+    #是否启动限制用户的名单list为允许模式，上面的YES限制了所有用户，可以用这个名单作为白名单，作为例外允许访问ftp根目录以外
+    chroot_list_enable=YES
+    #设置哪个文件是list文件，里面的用户将不受限制的去访问ftp根目录以外的目录
+    chroot_list_file=/etc/vsftpd.chroot_list
+    #是否开启写模式，开启后可以进行创建文件夹等写入操作
+    allow_writeable_chroot=YES
+    
+    #设置ftp根目录的位置,这个文件我们稍后自己创建
+    local_root=~/ftp
+   
+    #设置端口
+    listen_port=21
+    ```
+1. 重启服务：
+    ```
+    sudo /etc/init.d/vsftpd restart
+    ```
+1. 设置用户：
+    ```
+    # 添加用户
+    sudo useradd -d ~/ftp username
+    # 配置密码
+    sudo passwd username
+    ```
+1. 创建 user_list 文件：
+    ```
+    sudo vim /etc/vsftpd.user_list
+    ```
+   将 username 添加进去，多个用户的话，换行添加下一个。
+1. 创建用户文件夹：
+    ```
+    sudo mkdir ~/myftp
+    ```
+1. 连接 ftp：
+    ```
+    # linux访问输入ftp 加 你的IP
+    ftp xxx.xxx.xxx.xxx
+    ```
+
+## 安装 PHP 扩展
+### Imagick
+安装 libmagickwand-dev 和 libmagickcore-dev，不知道有没有用
+```
+sudo apt-get install libmagickwand-dev libmagickcore-dev
+```
+
+1. 使用pecl安装
+    ```shell script
+    # 进入 /etc/share 目录，此目录存放的全部软件包
+    vagrant@homestead:~$ cd /usr/share
+    # 安装 imagick
+    vagrant@homestead:/usr/share$ sudo pecl install imagick
+    # 省略 ...
+    Installing shared extensions:     /usr/lib/php/20160303/
+    Installing header files:          /usr/include/php/20160303/
+    ```
+
+1. 使用源码安装
+    
+    :::warning
+    使用源码安装不知道哪儿不对，安装成功配置好后 `imagick` 扩展没生效
+    :::
+    ```shell script
+    # 进入 /etc/share 目录，此目录存放的全部软件包
+    vagrant@homestead:~$ cd /usr/share
+    # 下载 imagick
+    vagrant@homestead:/usr/share$ sudo wget https://pecl.php.net/get/imagick-3.5.1.tgz
+    # 解压
+    vagrant@homestead:/usr/share$ sudo tar xf imagick-3.5.1.tgz
+    # 进入 imagick 目录
+    vagrant@homestead:/usr/share$ cd imagick-3.5.1
+    ```
+    
+    编译并安装
+    
+    :::tip
+    注意：若php版本不同，则替换以下`7.1`部分改成你需要的php版本号
+    :::
+    ```shell script
+    vagrant@homestead:/usr/share/imagick-3.5.1$ sudo /usr/bin/phpize7.1
+    # 省略 ...
+    vagrant@homestead:/usr/share/imagick-3.5.1$ sudo ./configure --with-php-config=/usr/bin/php-config7.1
+    # 省略 ...
+    # 安装
+    vagrant@homestead:/usr/share/imagick-3.5.1$ sudo make && sudo make install
+    # 省略 ...
+    Installing shared extensions:     /usr/lib/php/20160303/
+    Installing header files:          /usr/include/php/20160303/
+    ```
+1. 配置
+    - 方法一（建议使用方法二，因为 `php` 的配置文件较多，改起来比较麻烦）：
+        ```shell script
+        # 进入配置文件夹
+        vagrant@homestead:/usr/share/imagick-3.5.1$ cd /etc/php/7.1/cli
+        # 编辑配置文件
+        vagrant@homestead:/etc/php/7.1/cli$ sudo vim php.ini
+        # 按 I 键可输入，按 Esc 退出输入后再按 :wq 退出并保存
+        填入 'extension=imagick.so' 并保存
+        ```
+    - 方法二：
+        ```shell script
+        vagrant@homestead:/usr/share/imagick-3.5.1$ cd /etc/php/7.1/mods-available/
+        vagrant@homestead:/etc/php/7.1/mods-available$ sudo vim imagick.ini
+        # 按 I 键可输入，按 Esc 退出输入后再按 :wq 退出并保存
+        填入 'extension=imagick.so' 并保存
+        # 进入 fpm 文件
+        vagrant@homestead:/etc/php/7.1/mods-available$ cd /etc/php/7.1/fpm/conf.d
+        vagrant@homestead:/etc/php/7.1/mods-available$ sudo ln -s /etc/php/7.1/mods-available/imagick.ini 20-imagick.ini
+        ```
+1. 重启服务
+    ```shell script
+    vagrant@homestead:/etc/php/7.1/cli$ sudo service php7.1-fpm restart
+    ```

@@ -73,6 +73,15 @@ pre.vue-container
 .home-blog .hero h1, .home-blog .hero .description, .home-blog .hero .action, .home-blog .hero .huawei
   text-shadow: 0 2px 3px rgba(0,0,0,.65) !important;
 
+.page .theme-reco-content h2
+  padding-left: 0 !important;
+
+.page .theme-reco-content h2::before
+  border-left: none !important;
+
+a.header-anchor:hover
+  opacity: 1;
+
 // 分页按钮样式
 .pagation .pagation-list span.jump
   border: none !important; // 边框无法去除，原因是在分页组件内部写了 border: 1px solid var(--border-color) !important

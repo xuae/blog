@@ -73,15 +73,15 @@ N: See apt-secure(8) manpage for repository creation and user configuration deta
 ```
 
 1. 解决方法：重装 `ca-certificates`
-```shell script
-sudo apt-get install --reinstall ca-certificates
-```
+    ```shell script
+    sudo apt-get install --reinstall ca-certificates
+    ```
 
 1. 重新更新包，并安装
-```shell script
-sudo apt-get update
-sudo apt-get install jenkins
-````
+    ```shell script
+    sudo apt-get update
+    sudo apt-get install jenkins
+    ````
 
 ### `sudo apt-get install jenkins` 启动找不到 `java` 路径报错
 错误信息如下：

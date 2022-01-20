@@ -1,8 +1,6 @@
 ---
-    title: Laravel Homestead
+    title: Laravel Homestead 安装
     date: 2021-08-02
-    categories:
-     - 工具
     tags:
      - laravel
      - homestead
@@ -14,7 +12,9 @@ Laravel Homestead：[Laravel 8 官方扩展 Homestead 安装文档](https://lara
 
 具体简介请查看官方文档，以下只讲解自己是如何安装和使用此虚拟机的步骤。
 
-- 电脑环境：Win 10
+## 系统环境
+
+- 操作环境：Win 10
 - vagrant box 版本：`11.3.0`
 - homestead 版本：`12.3.2`
 

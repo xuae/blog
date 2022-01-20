@@ -1,8 +1,6 @@
 ---
-    title: Git
+    title: Git 基本命令
     date: 2020-03-14
-    categories:
-     - 工具
     tags:
      - git
 ---
@@ -62,62 +60,6 @@ git config --global --unset user.name // 删除全局配置的用户名
 git config --global --unset user.email // 删除全局配置的邮箱
 ```
 
-## SSH
-
-### 生成 ssh key
-
-::: warning
-注意：这里的 `xxxxx@xxxxx.com` 只是生成的 ssh key 的名称，并不约束或要求具体命名为某个邮箱
-
-现网的大部分教程均讲解的使用邮箱生成，其一开始的初衷仅仅是为了便于辨识所以使用了邮箱
-:::
-
-按照提示完成三次回车，即可生成 ssh key。通过查看 `~/.ssh/id_rsa.pub` 文件内容，获取到你的 public key，然后将此 key 添加到 github、gitee、gitlab 即可
-```
-ssh-keygen -t rsa -C "xxxxx@xxxxx.com"
-```
-
-### 同一电脑多个 ssh key
-
-同一电脑需要多个 `key` 时，需添加配置文件，在 `~/.ssh` 文件夹中添加 `config` 文件，存放 `key` 的文件不一样，需单独存放
-
-``` editorconfig
-# 配置
-# Host 站点
-# HostName 站点名
-# 优先使用公钥连接
-# PreferredAuthentications publickey
-# IdentityFile 私钥路径
-# User 用户名称
-
-# github 配置
-Host github.com
-HostName github.com
-IdentityFile ~/.ssh/id_rsa
-User git
-
-# gitee 配置
-Host gitee.com
-HostName gitee.com
-IdentityFile ~/.ssh/id_rsa_gitee
-User git
-
-# 其它
-...
-```
-
-### 测试
-
-格式：`git@域名`，例如：
-```
-ssh -T git@github.com
-```
-
-提示以下内容，则表示配置成功
-```
-Hi xxx! You've successfully ... 
-```
-
 ## 如何彻底删除已提交的 commit
 
 ::: danger
@@ -137,7 +79,7 @@ Hi xxx! You've successfully ...
 1. git push origin HEAD --force 强制推送
 
     强推可能会导致其他用户提交的commit丢失
-
+    
 ## 如何修改已提交 commit 的用户信息
 
 ::: danger
@@ -592,123 +534,3 @@ conventional-changelog -p angular -i CHANGELOG.md -w -r 0
 npm run changelog
 ```
 
-## 搭建 Git 服务器
-
-### 安装
-
-```shell script
-sudo apt-get install git
-
-# 查看版本
-git --version
-```
-
-### 创建用户
-
-```shell script
-# 查看已创建的用户列表
-cat /etc/passwd|grep -v nologin|grep -v halt|grep -v shutdown|awk -F":" '{ print $1"|"$3"|"$4 }'|more
-# 返回的结果
-root|0|0
-sync|4|65534
-tss|106|111
-pollinate|110|1
-ubuntu|1000|1000
-lxd|998|100
-lighthouse|1001|1001
-
-# 创建用户并创建此用户的文件夹，若仅需创建用户，请使用 useradd
-sudo adduser 用户名
-#... 按照提示配置姓名、邮箱、密码等即可
-
-# 删除用户
-sudo userdel 用户名
-```
-
-### 创建仓库
-
-::: tip
-注意：`git init --bare`用于初始化服务器仓库，`git init`用于初始化本地仓库
-:::
-```shell script
-# 进入home文件夹
-cd /home
-# 创建仓库文件夹
-sudo mkdir project.git
-# 初始化仓库
-git init --bare project.git
-```
-
-### 本地使用
-
-```shell script
-# 同步本地仓库，之后输入密码即可
-git clone Git用户名@服务器IP地址:/home/project.git
-```
-
-### 使用hook实现自动部署
-
-1. 进入hooks文件夹
-
-    ```shell script
-    cd /home/project.git/hooks
-    ```
-
-1. 创建`post-update`或者`post-receive`
-
-    ```shell script
-    # 创建并编辑
-    sudo vim post-update
-    ```
-
-1. 编辑`post-update`
-
-    按`I`进入编辑，`Esc`退出编辑，退出编辑后输入`:wq`保存并退出文件编辑
-    
-    ```shell script
-    #!/bin/sh
-    # 项目名
-    PROJECT_NAME=project
-    # 打包后的包名
-    PROJECT_DIST=dist
-    # 项目路径，临时存放git的代码路径和仓库地址
-    PROJECT_DIR=/home/$PROJECT_NAME
-    # 存放打包后的包文件路径
-    PACKAGE_DIR=/home/html/$PROJECT_NAME
-    
-    
-    if [ -d $PROJECT_DIR ]; then
-            rm -rf $PROJECT_DIR;
-    fi
-    mkdir $PROJECT_DIR
-    chmod -R 777 $PROJECT_DIR
-    
-    if [ -d $PACKAGE_DIR ]; then
-            rm -rf $PACKAGE_DIR
-    fi
-    
-    cd $PROJECT_DIR
-    unset GIT_DIR # 必须重置，否则无法进入文件夹
-    
-    git init
-    git remote add origin $PROJECT_DIR.git
-    git pull origin master
-    
-    # 安装依赖，并打包，将打包文件放入nginx配置的路径中
-    npm install
-    npm run build
-    mv $PROJECT_DIST $PACKAGE_DIR
-    
-    cd $PACKAGE_DIR
-    unset GIT_DIR
-    
-    rm -rf $PROJECT_NAME
-    ```
-
-1. 修改`post-update`权限（赋予执行权限）
-    
-    ```shell script
-    sudo chmod +x post-update
-    ```
-
-1. 完成之后，本地往服务器推送(`push`)代码，即可触发`post-update`文件内的命令

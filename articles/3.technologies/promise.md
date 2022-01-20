@@ -1,8 +1,6 @@
 ---
     title: Promise
     date: 2020-04-29
-    categories:
-     - 技术
     tags:
      - javascript
      - es6

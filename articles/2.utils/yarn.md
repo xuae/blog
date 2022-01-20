@@ -1,8 +1,6 @@
 ---
     title: Yarn
     date: 2020-10-28
-    categories:
-     - 工具
     tags:
      - yarn
 ---

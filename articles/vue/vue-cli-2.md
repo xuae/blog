@@ -1,8 +1,6 @@
 ---
     title: Vue Cli 2.x 搭建Vue项目步骤
     date: 2019-10-21
-    categories:
-     - 技术
     tags:
      - vue
      - vue cli

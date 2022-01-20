@@ -1,8 +1,6 @@
 ---
     title: Path 指令语法
     date: 2021-01-04
-    categories:
-     - 技术
     tags:
      - canvas
      - path

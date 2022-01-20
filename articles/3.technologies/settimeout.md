@@ -1,8 +1,6 @@
 ---
     title: 经典面试题setTimeout输出顺序分析
     date: 2021-10-15
-    categories:
-     - 技术
     tags:
      - javascript
      - es6

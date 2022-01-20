@@ -45,6 +45,7 @@ const sidebarTitle = (directory) => {
     notes: '笔记',
     technologies: '技术',
     utils: '工具',
+    server: '服务器',
   }
   const arr = directory.split('.');
   const name = arr[arr.length-1];

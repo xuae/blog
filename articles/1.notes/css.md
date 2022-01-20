@@ -1,8 +1,6 @@
 ---
     title: CSS
     date: 2020-04-04
-    categories:
-     - 笔记
     tags:
      - css
 ---

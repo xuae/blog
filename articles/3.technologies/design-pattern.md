@@ -1,8 +1,6 @@
 ---
     title: 设计模式
     date: 2020-07-09
-    categories:
-     - 技术
     tags:
      - 设计模式
 ---

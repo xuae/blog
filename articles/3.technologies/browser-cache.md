@@ -1,8 +1,6 @@
 ---
     title: 浏览器的强缓存和协商缓存
     date: 2021-10-14
-    categories:
-     - 技术
     tags:
      - javascript
      - cache

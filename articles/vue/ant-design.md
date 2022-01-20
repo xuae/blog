@@ -1,8 +1,6 @@
 ---
     title: Ant Design Vue
     date: 2020-04-16
-    categories:
-     - 技术
     tags:
      - vue
      - ant-design-vue

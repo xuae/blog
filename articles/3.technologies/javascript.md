@@ -1,8 +1,6 @@
 ---
     title: JavaScript
     date: 2020-07-03
-    categories:
-     - 技术
     tags:
      - javascript
      - es6

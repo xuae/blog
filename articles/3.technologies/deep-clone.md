@@ -1,8 +1,6 @@
 ---
     title: 如何实现一个深拷贝
     date: 2021-10-14
-    categories:
-     - 技术
     tags:
      - javascript
      - es6

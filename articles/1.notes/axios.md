@@ -1,8 +1,6 @@
 ---
     title: Axios
     date: 2021-07-26
-    categories:
-     - 笔记
     tags:
      - axios
 ---

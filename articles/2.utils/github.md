@@ -1,8 +1,6 @@
 ---
     title: Github
     date: 2020-03-09
-    categories:
-     - 工具
     tags:
      - github
 ---

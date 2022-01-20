@@ -1,8 +1,6 @@
 ---
     title: Chrome
     date: 2021-01-15
-    categories:
-     - 工具
     tags:
      - chrome
 ---

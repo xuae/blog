@@ -1,8 +1,6 @@
 ---
     title: JavaScript
     date: 2020-04-08
-    categories:
-     - 笔记
     tags:
      - javascript
 ---

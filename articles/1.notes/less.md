@@ -1,8 +1,6 @@
 ---
     title: Less
     date: 2021-07-21
-    categories:
-     - 笔记
     tags:
      - less
 ---

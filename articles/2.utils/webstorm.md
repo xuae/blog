@@ -1,8 +1,6 @@
 ---
     title: WebStorm
     date: 2020-03-14
-    categories:
-     - 工具
     tags:
      - webstorm
      - git

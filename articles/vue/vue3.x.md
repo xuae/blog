@@ -1,8 +1,6 @@
 ---
     title: Vue3.x
     date: 2020-10-28
-    categories:
-     - 技术
     tags:
      - vue3
 ---

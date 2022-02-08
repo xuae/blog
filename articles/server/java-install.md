@@ -33,7 +33,13 @@ apt install openjdk-8-jre-headless   # version 8u312-b07-0ubuntu1~20.04
 Ask your administrator to install one of them.
 ```
 
-## 下载
+## 直接安装
+```shell script
+sudo apt-get install default-jdk
+```
+
+## 压缩包安装
+### 下载
 
 ::: tip
 
@@ -71,7 +77,7 @@ Ask your administrator to install one of them.
         sudo wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" 链接
         ```
 
-## 安装 jdk
+### 安装 jdk
 
 1. 解压文件
     ```shell script

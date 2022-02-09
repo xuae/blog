@@ -169,7 +169,7 @@ E: Sub-process /usr/bin/dpkg returned an error code (1)
     lighthouse@VM-0-5-ubuntu:~$ 
     ```
 
-## 访问 Jenkins
+## 初始化 Jenkins
 ::: tip
 默认端口 `8080`
 :::

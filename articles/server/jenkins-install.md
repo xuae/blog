@@ -197,3 +197,23 @@ E: Sub-process /usr/bin/dpkg returned an error code (1)
 
 1. 完成
     ![完成](./jenkins/start-5.png)
+
+## 更新 Jenkins 版本
+
+```shell script
+# 进入文件夹
+cd /usr/share/jenkins
+
+# 关闭 Jenkins 服务
+sudo service jenkins stop
+
+# 将 jenkins.war 改名为 jenkins.war.old
+sudo mv jenkins.war jenkins.war.old
+
+# 下载最新版本 war 包
+# sudo wget https://updates.jenkins-ci.org/latest/jenkins.war
+sudo wget https://updates.jenkins.io/download/war/2.319.3/jenkins.war
+
+# 开启服务
+sudo service jenkins start
+```

@@ -6,7 +6,11 @@
 ---
 
 :::tip
+
+React 官方文档：<https://reactjs.org/>
+
 以下是亲自动手实践的，第一次自己搭建 React 项目，写得不好的地方，有待改进
+
 :::
 
 ## 系统要求
@@ -15,6 +19,10 @@
 - `npm` >= 5.6
 
 ## 创建项目
+
+::: tip
+Create React App 官方文档：<https://create-react-app.dev/>
+:::
 
 执行以下命令即可自动创建项目
 ```shell script
@@ -59,6 +67,12 @@ npx 不是拼写错误 —— 它是 [npm 5.2+ 附带的 package 运行工具](h
 - `npm run build` 或者 `yarn build`：打包项目
 
 ## 添加 craco
+
+::: tip
+
+craco 文档：<https://www.npmjs.com/package/@craco/craco>
+
+:::
 
 `create-creact-app` 项目，如果需要手动修改配置，需先 `npm run eject` 弹出配置，但这个过程是**不可逆**的，所以推荐使用第三方工具去修改。第三方工具有：`craco` 或者 `react-app-rewired` ，都可以重写 react 脚手架配置，具体选择 `craco` 还是 `react-app-rewired`，根据需求即可。
 
@@ -161,7 +175,9 @@ npx 不是拼写错误 —— 它是 [npm 5.2+ 附带的 package 运行工具](h
 
 ## 添加 antd
 
-引入 Ant Design 组件库
+::: tip
+引入 Ant Design 组件库，官方文档：<https://ant.design/>
+:::
 
 1. 安装依赖
     ```shell script
@@ -261,6 +277,12 @@ npx 不是拼写错误 —— 它是 [npm 5.2+ 附带的 package 运行工具](h
 ```
 
 ## 添加路由 react-router-dom
+:::tip
+React Router Dom 官方文档：<https://reactrouter.com/docs/en/v6/api>
+
+安装 `react-router-dom` 或者 `react-router` 皆可，`react-router` 包含了 `react-router-dom` 和 `react-router-native`
+:::
+
 1. 安装 react-router-dom 版本 v6.x
 ```shell script
 npm install react-router-dom -S

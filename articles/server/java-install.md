@@ -1,5 +1,5 @@
 ---
-    title: Java jdk 安装
+    title: Java JDK 安装
     date: 2021-01-19
     tags:
      - java
@@ -43,23 +43,39 @@ sudo apt-get install default-jdk
 
 ::: tip
 
-下载方式分为直接在官网下载和 `wget` 命令下载
+下载方式分为直接在当前博客下载、官网下载和 `wget` 命令下载
 
 官方网址：<https://www.oracle.com/java/technologies/downloads/>
 
-**注意**：官网下载需要账号密码，所以我使用的 `wget` 命令下载
+**注意**：官网下载需要账号密码
 :::
+
+- 当前博客下载
+  1. 安装包(从官网中下载的): 
+     - JDK8: [jdk-8u381-linux-x64.tar.gz](http://162.14.111.130:9999/files/jdk-8u381-linux-x64.tar.gz)
+     - JDK11: [jdk-11.0.20_linux-x64_bin.tar.gz](http://162.14.111.130:9999/files/jdk-11.0.20_linux-x64_bin.tar.gz)
+     - JDK17: [jdk-17_linux-x64_bin.tar.gz](http://162.14.111.130:9999/files/jdk-17_linux-x64_bin.tar.gz)
+     - JDK20: [jdk-20_linux-aarch64_bin.tar.gz](http://162.14.111.130:9999/files/jdk-20_linux-aarch64_bin.tar.gz)
+  1. 将下载后的文件放入服务器 `/home/download` 文件夹中
 
 - 官网下载
     1. 选择对应操作系统的版本，并点击其包名 `jdk-8u321-linux-x64.tar.gz`
         ![选择版本](./jdk/jdk8-download-1.png)
-    1. 勾选弹窗中的协议，点击 `Download jdk-8u321-linux-x64.tar.gz`
+    2. 勾选弹窗中的协议，点击 `Download jdk-8u321-linux-x64.tar.gz`
         ![下载](./jdk/jdk8-download-2.png)
-    1. 随后根据页面提示，输入账号密码，即可下载
+    3. 随后根据页面提示，输入账号密码，即可下载
+       ```
+       账号：2028056560@qq.com
+       密码：Oracle1234
+       若此账号已失效，请自行百度搜索可用的账号
+       ```
         ![账号密码](./jdk/jdk8-download-3.png)
-    1. 将下载后的文件放入服务器 `/home/download` 文件夹中
+    4. 将下载后的文件放入服务器 `/home/download` 文件夹中
 
 - 使用 `wget` 命令下载(因为需要接受安全协议，直接输入下载地址无法下载，所以要设置header)，若不更换版本，可直接使用以下命令下载
+    ::: danger
+    **注意：此方法在2023年8月22日时已失效，请使用其他方式下载**
+    :::
     ``` shell script
     # 进入 dowwnload 文件夹
     lighthouse@VM-0-5-ubuntu:~$ cd /home/download/
@@ -77,7 +93,7 @@ sudo apt-get install default-jdk
         sudo wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" 链接
         ```
 
-### 安装 jdk
+### 安装
 
 1. 解压文件
     ```shell script

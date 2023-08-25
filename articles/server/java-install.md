@@ -52,10 +52,10 @@ sudo apt-get install default-jdk
 
 - 当前博客下载
   1. 安装包(从官网中下载的): 
-     - JDK8: [jdk-8u381-linux-x64.tar.gz](http://162.14.111.130:9999/files/jdk-8u381-linux-x64.tar.gz)
-     - JDK11: [jdk-11.0.20_linux-x64_bin.tar.gz](http://162.14.111.130:9999/files/jdk-11.0.20_linux-x64_bin.tar.gz)
-     - JDK17: [jdk-17_linux-x64_bin.tar.gz](http://162.14.111.130:9999/files/jdk-17_linux-x64_bin.tar.gz)
-     - JDK20: [jdk-20_linux-aarch64_bin.tar.gz](http://162.14.111.130:9999/files/jdk-20_linux-aarch64_bin.tar.gz)
+     - JDK8: [jdk-8u381-linux-x64.tar.gz](http://162.14.111.130:9999/download/jdk-8u381-linux-x64.tar.gz)
+     - JDK11: [jdk-11.0.20_linux-x64_bin.tar.gz](http://162.14.111.130:9999/download/jdk-11.0.20_linux-x64_bin.tar.gz)
+     - JDK17: [jdk-17_linux-x64_bin.tar.gz](http://162.14.111.130:9999/download/jdk-17_linux-x64_bin.tar.gz)
+     - JDK20: [jdk-20_linux-aarch64_bin.tar.gz](http://162.14.111.130:9999/download/jdk-20_linux-aarch64_bin.tar.gz)
   1. 将下载后的文件放入服务器 `/home/download` 文件夹中
 
 - 官网下载
